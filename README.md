@@ -14,7 +14,7 @@ import StoryteqPlatform from '@storyteq/platform-integration';
 
 ## Available pages
 
-#### General usage
+### General usage
 
 Each page's instance provides the following methods;
 
@@ -26,7 +26,7 @@ __destroy()__
 
 Destroy the currently active page instance.
 
-#### Create media form
+### Create media form
 
 __Usage example__
 ```js
@@ -35,7 +35,7 @@ const createMediaPage = new StoryteqPlatform.createMediaPage(
   'AUTH_TOKEN',
   1000, // template ID,
   {
-    assetManagerScope: [], // Scope the asset selection to set of asset providers
+    assetManagerScope: [], // Scope the asset selection to a set of asset providers
     publish: [ {} ], // Upon rendering completion, publish to this channel
   },
 );
