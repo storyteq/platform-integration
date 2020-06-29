@@ -11,9 +11,9 @@ class BaseFrameController {
   }
 
   _init() {
-    if (document.readyState !== 'interactive') {
+    if (!['interactive', 'complete'].includes(document.readyState)) {
       document.addEventListener('readystatechange', () => {
-        if (document.readyState === 'interactive') this._spawn();
+        if (['interactive', 'complete'].includes(document.readyState)) this._spawn();
       });
     } else this._spawn();
   }
