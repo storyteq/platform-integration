@@ -37,6 +37,7 @@ class BaseFrameController {
 
   _initiatePageListeners() {
     const receiveMessage = (e) => {
+      if (e.origin !== 'https://platform.storyteq.com') return;
       try {
         const messagePayload = JSON.parse(e.data);
         this.eventListeners
