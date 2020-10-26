@@ -1,11 +1,12 @@
 import omit from 'lodash.omit';
 import queryString from 'query-string';
+import activeFrameUrl from '../get-frame-url.js';
 
 class BaseFrameController {
   constructor(spawnElement, authToken, uri, config) {
     this.spawnElement = spawnElement;
     const queryParams = queryString.stringify({ no_navigation: true, config });
-    this.url = `https://platform.storyteq.com/?auth_token=${authToken}/#${uri}?${queryParams}`;
+    this.url = `${activeFrameUrl()}/?auth_token=${authToken}/#${uri}?${queryParams}`;
     this._init();
     this.eventListeners = [];
   }
@@ -37,7 +38,6 @@ class BaseFrameController {
 
   _initiatePageListeners() {
     const receiveMessage = (e) => {
-      if (e.origin !== 'https://platform.storyteq.com') return;
       try {
         const messagePayload = JSON.parse(e.data);
         this.eventListeners

@@ -1,6 +1,12 @@
+const isTesting = (process && process.env && process.env.ENVIRONMENT === 'testing');
+
+if (isTesting) {
+  window.APP_URL = 'https://platform.storyteq.work';
+}
+
 import CreateMediaPage from './classes/CreateMediaPage';
 
-if (process && process.env && process.env.ENVIRONMENT === 'testing') {
+if (isTesting) {
   const createMediaPage = new CreateMediaPage(
     '#frame-tester',
     process.env.TEST_API_KEY,
