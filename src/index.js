@@ -1,5 +1,4 @@
 const isTesting = (process && process.env && process.env.ENVIRONMENT === 'testing');
-
 if (isTesting) {
   window.APP_URL = 'https://platform.storyteq.work';
 }

@@ -2,6 +2,24 @@
 
 Integrate with components of the Storyteq platform.
 
+## Development
+
+Inside of src/index.js you can change anthing inside `isTesting` conditionals to test around with settings.
+
+```
+cp .env.example .env
+# Edit your env
+# TEST_API_KEY="YOUR_TOKEN"
+# ENVIRONMENT="testing"
+
+
+nvm use 10
+npm i
+npm start
+```
+
+To change the platform you need to edit index.js.
+
 ## Usage
 
 ```
