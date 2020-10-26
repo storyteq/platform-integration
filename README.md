@@ -18,7 +18,7 @@ npm i
 npm start
 ```
 
-To change the platform you need to edit index.js.
+To change the platform url you need to edit index.js.
 
 ## Usage
 
