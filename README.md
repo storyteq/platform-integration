@@ -29,10 +29,9 @@ npm i @storyteq/platform-integration
 ```
 import StoryteqPlatform from '@storyteq/platform-integration';
 ```
-
-## Available pages
-
 ### General usage
+
+It's important to note that the iframe's dimensions are determined by the parent's dimensions, so usually you need to make sure there's always a height for `#element-to-spawn-into`.
 
 Each page's instance provides the following methods;
 
@@ -43,6 +42,8 @@ Depending on the context, the callback can contain different or no arguments.
 __destroy()__
 
 Destroy the currently active page instance.
+
+## Available pages
 
 ### Create media form
 
@@ -63,4 +64,19 @@ createMediaPage
   .on('created', (media) => {
     console.log({ media });
   });
+```
+
+### CRM Analytics page
+
+__Usage example__
+```js
+const crmAnalyticsPage = new StoryteqPlatform.crmAnalyticsPage(
+  '#element-to-spawn-into',
+  'AUTH_TOKEN',
+  1000, // template ID,
+  1000, // campaign ID,
+);
+
+crmAnalyticsPage
+  .on('loaded', () => console.log('loaded'));
 ```
