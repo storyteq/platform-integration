@@ -1,6 +1,6 @@
 {
   "name": "@storyteq/platform-integration",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Integrate with views from the Storyteq platform",
   "main": "src/index.js",
   "scripts": {
