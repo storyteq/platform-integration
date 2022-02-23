@@ -43,7 +43,7 @@ __destroy()__
 
 Destroy the currently active page instance.
 
-### Production usage
+## Production usage
 
 In order for the generated iframe to load correctly, your domains need to be whitelisted in our Content-Security-Policy headers. Please share your testing and production domains with us so we can add them as allowed frame-ancestors.
 
