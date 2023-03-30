@@ -7,7 +7,7 @@ class CreateMediaPage extends BaseFrameController{
     this.availableEvents = [
       'loaded',
       'created',
-      'multiple-created',
+      'batch-created',
     ];
   }
 }
