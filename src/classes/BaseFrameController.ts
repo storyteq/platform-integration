@@ -2,8 +2,6 @@ import { omit } from 'lodash-es';
 import { getFrameUrl } from '../get-frame-url';
 import { OneOf } from '../interfaces/one-of.interface';
 
-const queryString = require('query-string');
-
 export class BaseFrameController<T extends Array<string>> {
   public url: URL;
   public eventListeners: Array<{ event: OneOf<T>; cb: (data: unknown) => void }> = [];
@@ -13,14 +11,13 @@ export class BaseFrameController<T extends Array<string>> {
     public readonly spawnElement: string,
     public readonly authToken: string,
     uri: string,
-    config,
+    config: string,
     public readonly availableEvents: T
   ) {
-    this.url = new URL(getFrameUrl());
+    this.url = new URL(uri, getFrameUrl());
     this.url.searchParams.set('auth_token', authToken);
-
-    const queryParams = queryString.default.stringify({ no_navigation: true, config });
-    this.url.hash = `${uri}/${queryParams}`;
+    this.url.searchParams.set('no_navigation', 'true');
+    this.url.searchParams.set('config', config);
 
     this._init();
   }
