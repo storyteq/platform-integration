@@ -6,8 +6,10 @@ export interface ICreateMediaConfig {
 }
 export class CreateMediaPage extends BaseFrameController<['loaded', 'created']> {
   constructor(spawnElement: string, STauthToken: string, templateId: number, config: ICreateMediaConfig = {}) {
-    const page = `/content/templates/${templateId}/media/create`;
+    const page = `/integration`;
 
-    super(spawnElement, STauthToken, page, JSON.stringify(config), ['loaded', 'created']);
+    super(spawnElement, STauthToken, page, JSON.stringify(config), ['loaded', 'created'], {
+      templateId: `${templateId}`,
+    });
   }
 }

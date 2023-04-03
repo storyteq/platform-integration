@@ -1,4 +1,4 @@
-import { omit } from 'lodash-es';
+import { forEach, omit } from 'lodash-es';
 import { getFrameUrl } from '../get-frame-url';
 import { OneOf } from '../interfaces/one-of.interface';
 
@@ -12,12 +12,21 @@ export class BaseFrameController<T extends Array<string>> {
     public readonly authToken: string,
     uri: string,
     config: string,
-    public readonly availableEvents: T
+    public readonly availableEvents: T,
+    extraSearchParams: Record<string, string> = {}
   ) {
     this.url = new URL(uri, getFrameUrl());
-    this.url.searchParams.set('auth_token', authToken);
-    this.url.searchParams.set('no_navigation', 'true');
-    this.url.searchParams.set('config', config);
+
+    const searchParams = {
+      auth_token: authToken,
+      no_navigation: 'true',
+      config: config,
+      ...extraSearchParams,
+    };
+
+    forEach(searchParams, (value: string, key: string) => {
+      this.url.searchParams.set(key, value);
+    });
 
     this._init();
   }
