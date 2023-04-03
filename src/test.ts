@@ -1,0 +1,28 @@
+import { CreateMediaPage, CrmAnalyticsPage } from './index';
+
+window.APP_URL = 'https://platform.storyteq.work';
+
+const TEST_API_KEY =
+  'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJOV0dvRVMtclJkekU4eDFEYUo1UkpzaTRlOGYtX3JGa05TUldtb18ybjRVIn0.eyJleHAiOjE2ODA1MTg5ODYsImlhdCI6MTY4MDUxODY4NiwiYXV0aF90aW1lIjoxNjgwNTEwNTc3LCJqdGkiOiJhY2Q0YjNmMi00YjQwLTRiNjEtOTQ0OS05MTU3NDZhODUxN2QiLCJpc3MiOiJodHRwczovL2tleWNsb2FrLXRlc3QuaXRnLmNvLnVrL3JlYWxtcy9zdG9yeXRlcS53b3JrIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImQ0NGIxYWY1LThkMjQtNDg2NS1iMDc0LWMzMTk4ZTE0NzQxZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImJyYW5kLnN0b3J5dGVxLndvcmsiLCJzZXNzaW9uX3N0YXRlIjoiNTA0ZjQ0MDQtYjM2NC00OGNmLWI3ZTEtYzBhYTk0MTZmYWI0IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2JyYW5kLnN0b3J5dGVxLmRldiIsImh0dHBzOi8vYnJhbmQuc3Rvcnl0ZXEud29yayIsImh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1zdG9yeXRlcS53b3JrIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiI1MDRmNDQwNC1iMzY0LTQ4Y2YtYjdlMS1jMGFhOTQxNmZhYjQiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IlJhZmFlbCBGZXJuYW5kZXogU2VycmEiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJyYWZhZWxmZXJuYW5kZXpzZXJyYUB0ZWFtaXRnLmNvbSIsImdpdmVuX25hbWUiOiJSYWZhZWwiLCJmYW1pbHlfbmFtZSI6IkZlcm5hbmRleiBTZXJyYSIsImVtYWlsIjoicmFmYWVsZmVybmFuZGV6c2VycmFAdGVhbWl0Zy5jb20ifQ.Vsg7foffrUK9dcWayWTHW6hSFPvbm3Ve1mKVQIC5YKxid9uiJmhw2Qh9eLvN9tQsdaK4DMdwAX6DZtQ1rD_hFjHAEbQOK5cPEhqZC2gOaeDLKdUMKJ5IGFG52mTWZc2Fy1wWiTxyPk_ofrtjhZUTbrdkNhsjsyrMjtSG3c8c1XCjH3ibxX1Mv0vCuNOIAr8Oc3SH0DRC9ctyRw3BvhleDb4IxEa9ROYS5-qWbBFkKC467mWKuJmlaAqr8w5oz1w6d4GrL14bUloIeGTxFpiARhLv7oRxFTVMHMRZtuDUflx7roXYc3UXkbw6uKYOFSxPLxJp5loC_iDtu-cNRYA3hA';
+
+const createMediaPage = new CreateMediaPage('#frame-tester', TEST_API_KEY, 115, {
+  publish: [
+    {
+      type: 'brandfolder',
+    },
+  ],
+});
+
+createMediaPage
+  .on('loaded', (pl) => {
+    console.log('loaded', pl);
+  })
+  .on('created', (media) => {
+    console.log('CREATED', media);
+  });
+
+const crmAnalyticsPage = new CrmAnalyticsPage('#frame-tester', TEST_API_KEY, 115, 15);
+
+crmAnalyticsPage.on('loaded', (pl) => {
+  console.log('loaded', pl);
+});

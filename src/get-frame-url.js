@@ -1,1 +1,0 @@
-export default () => typeof window.APP_URL !== 'undefined' ? window.APP_URL : 'https://platform.storyteq.com';
