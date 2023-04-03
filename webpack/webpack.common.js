@@ -1,12 +1,10 @@
 const Path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: {
-    app: Path.resolve(__dirname, '../src/index.js'),
+    app: Path.resolve(__dirname, '../src/index.ts'),
   },
   output: {
     path: Path.join(__dirname, '../build'),
@@ -18,25 +16,20 @@ module.exports = {
       name: false,
     },
   },
-  plugins: [
-    new Dotenv(),
-    new CleanWebpackPlugin(),
-    new CopyWebpackPlugin({ patterns: [{ from: Path.resolve(__dirname, '../public'), to: 'public' }] }),
-    new HtmlWebpackPlugin({
-      template: Path.resolve(__dirname, '../src/test.html'),
-    }),
-  ],
+  plugins: [new CleanWebpackPlugin()],
   resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
     alias: {
       '~': Path.resolve(__dirname, '../src'),
     },
   },
+
   module: {
     rules: [
       {
-        test: /\.mjs$/,
-        include: /node_modules/,
-        type: 'javascript/auto',
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
