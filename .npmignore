@@ -1,0 +1,11 @@
+src
+webpack
+tsconfig.json
+/.browserslistrc
+/.eslintrc.js
+/.gitignore
+/.prettierrc
+/.travis.yml
+.idea
+.dependabot
+*.tgz

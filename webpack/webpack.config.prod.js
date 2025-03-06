@@ -1,28 +1,28 @@
-const Webpack = require('webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
+const Path = require('path');
 
 module.exports = merge(common, {
   mode: 'production',
   devtool: 'source-map',
-  stats: 'errors-only',
+  stats: 'info',
   bail: true,
+  entry: Path.resolve(__dirname, '../src/index.ts'),
   output: {
-    filename: 'js/[name].js'
+    path: Path.join(__dirname, '../build'),
+    filename: 'index.js',
+    globalObject: 'this',
+    library: {
+      name: '@storyteq/platform-integration',
+      type: 'umd',
+    },
   },
-  plugins: [
-    new Webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
-    new Webpack.optimize.ModuleConcatenationPlugin(),
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
-      },
-    ]
-  }
+  externals: {
+    'lodash-es': {
+      commonjs: 'lodash-es',
+      commonjs2: 'lodash-es',
+      amd: 'lodash-es',
+      root: '_',
+    },
+  },
 });
