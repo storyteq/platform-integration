@@ -1,39 +1,23 @@
 const Path = require('path');
-const Webpack = require('webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'development',
-  devtool: 'cheap-eval-source-map',
+  devtool: 'eval-cheap-source-map',
   output: {
-    chunkFilename: 'js/[name].chunk.js'
+    chunkFilename: 'js/[name].chunk.js',
+  },
+  entry: {
+    app: Path.resolve(__dirname, '../src/test.ts'),
   },
   devServer: {
-    inline: true,
-    hot: true
+    hot: true,
   },
   plugins: [
-    new Webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    })
+    new HtmlWebpackPlugin({
+      template: Path.resolve(__dirname, '../src/test.html'),
+    }),
   ],
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        include: Path.resolve(__dirname, '../src'),
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        options: {
-          emitWarning: true
-        }
-      },
-      {
-        test: /\.js$/,
-        include: Path.resolve(__dirname, '../src'),
-        loader: 'babel-loader'
-      }
-    ]
-  }
 });
