@@ -8,7 +8,8 @@ export const AVAILABLE_CREATE_MEDIA_EVENTS: ['loaded', 'created', 'batch-created
 ];
 
 export interface ICreateMediaConfig {
-  creationType?: 'batch';
+  creationType?: 'batch' | 'batch-edit' | 'batch-copy';
+  batchId?: number;
   publish?: Array<{ type: string; variant?: string; parameters?: Array<string> }>; // Upon rendering completion, publish to this channel
   notifications?: Array<{ type?: string; route?: string }>; // Will send a notification to the target route upon media status change with the full media object
   mediaRecreateHash?: string;
