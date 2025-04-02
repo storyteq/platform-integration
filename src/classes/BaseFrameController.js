@@ -3,10 +3,10 @@ import queryString from 'query-string';
 import activeFrameUrl from '../get-frame-url.js';
 
 class BaseFrameController {
-  constructor(spawnElement, authToken, uri, config) {
+  constructor(spawnElement, authToken, uri, config, templateId) {
     this.spawnElement = spawnElement;
     const queryParams = queryString.stringify({ no_navigation: true, config });
-    this.url = `${activeFrameUrl()}/?auth_token=${authToken}/#${uri}?${queryParams}`;
+    this.url = `${activeFrameUrl()}/?auth_token=${authToken}&templateId=${templateId}#${uri}?${queryParams}`;
     this._init();
     this.eventListeners = [];
   }
