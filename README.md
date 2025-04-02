@@ -209,19 +209,24 @@ For after effects template, ```forceMediaPreviewBeforeCreate``` allows you to en
 \
 Possible configurations:
 
-| Attribute           | Description                                                                                    | Option(s)                      |
-|---------------------|------------------------------------------------------------------------------------------------|--------------------------------|
-| host_product_name   | Name of your company/product                                                                   | Free text (string)             |
-| media_alias         | Alias of media/creative                                                                        | Free text (string)             |
-| media_alias_plural  | Alias of media/creative in plural form                                                         | Free text (string)             |
-| batch_alias         | Alias of batch                                                                                 | Free text (string)             |
-| button_media_create | Media create button custom description/text                                                    | Free text (string)             |
-| end_screen_title    | Title of the screen indicating a media or media batch has been created/published               | Free text (string)             |
-| end_screen_subtitle | Subtitle of the screen indicating a media or media batch has been created/published            | Free text (string)             |
-| color_theme_hex     | Color theme of UI elements such as buttons, loading bars, etc.                                 | Hex code (string)              |
-| full_screen         | Choice of having the create form cover the whole screen or not                                 | true/false                     |
-| cancelable          | Shows a cancel button on the create media form that will event a 'canceled' event when pressed | true/false (defaults to false) |
-| show_end_screen_for_batches | Showing end screen dialog after creating a batch                                       | true/false (defaults to false) |
+| Attribute                   | Description                                                                                    | Option(s)                      |
+|-----------------------------|------------------------------------------------------------------------------------------------|--------------------------------|
+| host_product_name           | Name of your company/product                                                                   | Free text (string)             |
+| media_alias                 | Alias of media/creative                                                                        | Free text (string)             |
+| media_alias_plural          | Alias of media/creative in plural form                                                         | Free text (string)             |
+| batch_alias                 | Alias of batch                                                                                 | Free text (string)             |
+| button_media_create         | Media create button custom description/text                                                    | Free text (string)             |
+| end_screen_title            | Title of the screen indicating a media or media batch has been created/published               | Free text (string)             |
+| end_screen_subtitle         | Subtitle of the screen indicating a media or media batch has been created/published            | Free text (string)             |
+| color_theme_hex             | Color theme of UI elements such as buttons, loading bars, etc.                                 | Hex code (string)              |
+| full_screen                 | Choice of having the create form cover the whole screen or not                                 | true/false                     |
+| cancelable                  | Shows a cancel button on the create media form that will event a 'canceled' event when pressed | true/false (defaults to false) |
+| show_end_screen_for_batches | Showing end screen dialog after creating a batch                                               | true/false (defaults to false) |
+| enable_create_more          | Enables the "Create & Add More" button                                                         | true/false (defaults to false) |
+
+#### Create & Add More
+Create & Add More functionality allows for creating additional assets after an asset has been created without having to re-open the asset create iframe.
+This should not exit the iframe after an asset is created, but have the iframe remain open. This behaviour should differentiate between the regular create asset button, based on the willCreateMore property. willCreateMore is set to true or false in the created message. This separate behavior needs to be built before using the create more action can be fully supported by the integration.
 
 ##### endScreenActions
 \
